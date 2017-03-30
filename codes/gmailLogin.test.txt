@@ -1,0 +1,62 @@
+package test2;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class example1 {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		
+//		driver.get("http://ebay.com");
+//		
+//		File scrFile= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//	      org.apache.commons.io.FileUtils.copyFile(scrFile, new File("C:\\Users\\chakr\\Desktop\\screenshot.png"));		
+		
+	      driver.get("https://mail.google.com/mail/u/0/#inbox");
+	      driver.findElement(By.id("Email")).sendKeys("chakravarthy1662@gmail.com");
+	      driver.findElement(By.id("next")).click();
+	      wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Passwd")));
+			driver.findElement(By.id("Passwd")).sendKeys("xxxxxxx");
+			driver.findElement(By.id("signIn")).click();
+			
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id=':ha']/div/div")));
+			driver.findElement(By.xpath("//*[@id=':2x']/div[1]/div")).click();
+	     	driver.findElement(By.id(":iw")).click();
+			
+		//driver.findElement(By.xpath("//div[contains(text(), 'Unread')]")).click();
+			System.out.println("URL = "+ driver.getCurrentUrl());
+			System.out.println("Done");
+			Thread.sleep(2000);
+			
+			// /html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[2]/div
+			driver.findElement(By.xpath("html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[2]/div")).click();
+			driver.findElement(By.id(":hp")).click();
+			Thread.sleep(1000);
+			System.out.println(driver.getTitle());
+			//div[contains(text(), 'COMPOSE')]
+			//X-path ====*[@id=":2x"]/div[1]/div
+			
+	      // steps for sign-out
+			driver.findElement(By.xpath("//a[@class='gb_b gb_eb gb_R']")).click();
+		   driver.findElement(By.id("gb_71")).click();
+		   
+		   System.out.println(driver.getTitle());
+		   
+		   
+	
+	}
+
+}

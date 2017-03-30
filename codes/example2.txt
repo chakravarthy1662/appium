@@ -1,0 +1,44 @@
+package test2;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class Example2 {
+
+	public static void main(String[] args) {
+
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+        WebDriver d= new ChromeDriver();
+        
+        // open browser
+        d.get("https://uk.webuy.com/");
+        
+        //click on search block
+        d.findElement(By.id("stext")).sendKeys("iphone");
+        
+        //click on search button
+        d.findElement(By.xpath(".//*[@id='headersearch']/div[3]/input")).click();
+		
+        // add first iphone
+     d.findElement(By.xpath("html/body/div[5]/div[1]/div[3]/div[5]/div[1]/div[1]/div[3]/div/a[2]/div")).click();
+
+		// add second iphone
+   d.findElement(By.xpath("html/body/div[5]/div[1]/div[3]/div[5]/div[1]/div[2]/div[3]/div/a[2]/div")).click();
+
+	// verify items add to cart
+   System.out.println(d.findElement(By.xpath("html/body/div[5]/div[2]/div[4]/div[2]/table/tbody/tr/td[1]")).getText());
+	
+	// click on view basket
+	d.findElement(By.xpath("html/body/div[5]/div[2]/div[4]/div[2]/table/tbody/tr/td[2]/a[1]")).click();
+    
+	// change quantity
+ Select dropdown=new Select(d.findElement(By.xpath("html/body/div[4]/div[1]/div[3]/div[2]/form/table/tbody/tr[1]/td[1]/div/select")));	
+	dropdown.selectByIndex(3);
+	System.out.println(d.findElement(By.xpath("html/body/div[4]/div[1]/div[3]/div[2]")).getText());
+	
+	}
+
+}

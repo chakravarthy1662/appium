@@ -1,0 +1,26 @@
+package gmailLoginTest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Alerts {
+
+	public static void main(String[] args) throws InterruptedException  {
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		WebDriver d= new ChromeDriver();
+		
+	// enter url
+	d.get("http://www.tizag.com/javascriptT/javascriptalert.php");
+	
+	d.findElement(By.xpath("html/body/table[3]/tbody/tr[1]/td[2]/table/tbody/tr/td/div[4]/form/input")).click();
+	
+	System.out.println(d.switchTo().alert().getText());
+	Thread.sleep(1000);
+	d.switchTo().alert().accept(); // it is for ok yes done accept
+	d.switchTo().alert().dismiss();
+	// d.switchTo().alert().sendKeys("aasdfghj"); // send the information in alert
+	
+	}
+
+}

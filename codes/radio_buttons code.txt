@@ -1,0 +1,55 @@
+package gmailLoginTest;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class SpicejetTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		WebDriver d= new ChromeDriver();
+		
+		// enter url
+		Thread.sleep(5000);
+		d.get("http://www.spicejet.com/");
+		
+		//dynamic drop downs
+  d.findElement(By.xpath("//*[@id='ctl00_mainContent_ddl_originStation1_CTXT']")).click();
+		d.findElement(By.xpath("//a[@value='BOM']")).click();
+d.findElement(By.xpath(".//*[@id='ctl00_mainContent_ddl_destinationStation1_CTXT']")).click();
+        d.findElement(By.xpath("//a[@value='DHM']")).click();
+		
+        
+        
+        //CSS selectors
+		Thread.sleep(5000);
+		d.findElement(By.cssSelector("[id='#ctl00_mainContent_txt_Fromdate']")).click();
+	
+		// static drop down by using "Select class"
+  Select dropdown=new Select(d.findElement(By.xpath("//*[@id='ctl00_mainContent_ddl_Adult']")));
+	dropdown.selectByIndex(3);
+	Thread.sleep(5000);
+	dropdown.selectByValue("5");
+	Thread.sleep(5000);
+	dropdown.selectByVisibleText("9 Adults");
+	
+	// Handling check boxes
+System.out.println(d.findElement(By.xpath("//*[@id='ctl00_mainContent_chk_StudentDiscount']")).isSelected());
+	d.findElement(By.xpath("//*[@id='ctl00_mainContent_chk_StudentDiscount']")).click();
+  System.out.println(d.findElement(By.xpath("//*[@id='ctl00_mainContent_chk_StudentDiscount']")).isSelected());
+	d.findElement(By.xpath("//*[@id='ctl00_mainContent_chk_StudentDiscount']")).click();
+	  System.out.println(d.findElement(By.xpath("//*[@id='ctl00_mainContent_chk_StudentDiscount']")).isSelected());
+   
+	  //radio button
+	  Thread.sleep(5000);
+	  d.findElement(By.xpath("//input[@value='OneWay']")).click();
+	  Thread.sleep(5000);
+	  d.findElement(By.xpath("//input[@value='RoundTrip']")).click();
+	
+	}
+
+}

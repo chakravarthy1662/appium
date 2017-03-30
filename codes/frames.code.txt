@@ -1,0 +1,46 @@
+package test1;
+
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Frames5 {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+        WebDriver d= new ChromeDriver();
+        d.get("http://www.espncricinfo.com/ci/content/player/253802.html");
+		
+		WebElement table=d.findElement(By.className("engineTable"));
+		
+		// finding rows in table1
+List<WebElement>numofrows=table.findElements(By.tagName("tr"));
+		System.out.println("no of rows: "+numofrows.size());
+		int i=0;
+		//  finding column in each rows
+		for(WebElement eachrow: numofrows){
+			
+		List<WebElement> eachcolumn=eachrow.findElements(By.tagName("td"));
+		i++;
+		System.out.println("no of column"+i+"th row are"+eachcolumn.size());	
+		// find the cell value or text
+		for(WebElement text:eachcolumn){
+			System.out.println(text.getText());
+			
+		}
+		
+		
+		
+		
+		}
+		
+		
+		
+	}
+
+}

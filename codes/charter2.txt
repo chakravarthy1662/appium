@@ -1,0 +1,49 @@
+package charterShow;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Example2 {
+
+	public static void main(String[] args) {
+
+System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		WebDriver d= new ChromeDriver();
+		d.get("https://www.charter.com/cable-tv.html");
+  // d.findElement(By.xpath("//div[@data-id='db5cc77e-09f5-4732-94ca-afb00199405b']")).click();		
+	
+	d.findElement(By.className("spectrum-first")).click();
+	System.out.println(d.findElement(By.className("alternate")).getText());
+	
+	
+	
+	d.findElement(By.xpath("//a[@data-linkname='HD & DVR']")).click();
+//	System.out.println(d.findElement(By.xpath("//*[@id='45ccd0fb-ac09-4e22-9dc4-666dbe19d9d2']/h2")).getText());
+	
+	//System.out.println(d.findElement(By.xpath("//h2[contains(text(), 'Most HD channels available anywhere')]")).getText());
+
+       //Most HD channels available anywhere.
+	
+	//System.out.println(d.findElement(By.xpath("//*[contains(@class='alternate') and contains(text(), 'Most HD channels available anywhere']")).getText());
+	
+	
+	d.findElement(By.xpath("//a[@data-linkname='On Demand']")).click();
+    //	Spectrum TV On Demand
+	
+  // System.out.println(d.findElement(By.xpath("//*[contains(@class='alternate text-info') and contains(text(), 'Spectrum TV On Demand']")).getText());
+
+	
+	d.findElement(By.xpath("//a[@data-linkname='Spectrum TV App']")).click();
+	
+	d.findElement(By.xpath("//a[@data-linkname='Genres']")).click();
+
+	d.findElement(By.xpath("//a[@data-linkname='Premium Channels']")).click();
+
+	d.findElement(By.xpath("//a[@data-linkname='Channel Lineup']")).click();
+
+
+	
+	}
+
+}

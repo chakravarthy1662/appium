@@ -1,0 +1,32 @@
+package test1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ActionClass {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		WebDriver d= new ChromeDriver();
+		d.get("https://www.amazon.com/");
+		
+		Actions a=new Actions(d);
+		
+	     Thread.sleep(2000);
+
+WebElement element=d.findElement(By.xpath(".//*[@id='nav-al-your-account']/div"));
+        a.moveToElement(element).pause(1000).build().perform();
+		
+	WebElement x=d.findElement(By.id("twotabsearchtextbox"));
+	Thread.sleep(2000);   
+	a.keyDown(Keys.SHIFT).click(d.findElement(By.id("twotabsearchtextbox"))).sendKeys("smallletters").build().perform();
+	Thread.sleep(2000);
+	a.contextClick(x).build().perform();
+	}
+
+}

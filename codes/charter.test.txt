@@ -1,0 +1,51 @@
+package charterShow;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Example1 {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		WebDriver d= new ChromeDriver();
+		// step-1 navigate to URL
+		d.get("https://www.charter.com/cable-tv.html");
+		// wait condition
+		WebDriverWait wait = new WebDriverWait(d, 60);
+		
+		
+		// click on Check Availability button
+		d.findElement(By.xpath("/html/body/header/div[1]/div/div[3]/div/div/div/div/div/div/div[1]/div/div[3]/div/div/div[2]/div/a")).click();
+		
+		// enter details
+	    Thread.sleep(2000);
+	  //*[@id="70ca2bc9-7546-45aa-8ef7-698dacc80f5d"]/h3
+     //System.out.println(d.findElement(By.xpath("//*[@id='70ca2bc9-7546-45aa-8ef7-698dacc80f5d']/h3")).getText());
+ 
+	    //System.out.println(d.findElement(By.id("70ca2bc9-7546-45aa-8ef7-698dacc80f5d")).getText());
+		d.findElement(By.name("address1")).sendKeys("2250 marsh ln");
+		d.findElement(By.id("apt")).sendKeys("4217");
+		d.findElement(By.id("zip")).sendKeys("75006");
+		//button[@type='submit']
+		//button[@data-linktype='orange_button']
+		
+	//	d.findElement(By.xpath("//*[@id='eeaafab7-2421-4607-83b9-0f57b6a9671e']/div/form/div/button")).click();
+		d.findElement(By.xpath("//button[@data-linktype='orange_button']")).click();
+		
+		//*[@id='logoHeader']/div/div[2]/ul[2]/li[3]/div
+		wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//*[@id='logoHeader']/div/div[2]/ul[2]/li[3]/div"))));
+
+		System.out.println(d.findElement(By.xpath("//*[@id='logoHeader']/div/div[2]/ul[2]/li[3]/div")).getText());
+		Thread.sleep(5000);
+		d.findElement(By.xpath("//*[@id='logoHeader']/div/div[2]/ul[2]/li[3]/div")).click();
+		
+	
+	
+	
+	}
+
+}
